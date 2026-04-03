@@ -1,43 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>For You ❤️</title>
+  <title>For Amoli ❤️</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      background: black;
+      overflow: hidden;
       font-family: Arial;
-    }
-
-    .box {
       text-align: center;
       color: white;
     }
 
     h1 {
-      font-size: 60px;
+      margin-top: 15%;
+      font-size: 50px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 30px;
+      background: red;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .hidden {
+      display: none;
+      font-size: 35px;
+      margin-top: 20px;
+      color: pink;
       animation: glow 1s infinite alternate;
     }
 
-    p {
-      font-size: 22px;
+    @keyframes glow {
+      from { text-shadow: 0 0 10px pink; }
+      to { text-shadow: 0 0 30px red; }
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px white; }
-      to { text-shadow: 0 0 30px red; }
+    .heart {
+      position: absolute;
+      color: red;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>I LOVE YOU ❤️</h1>
-    <p>Forever yours 💖</p>
+
+  <h1>Hey Amoli ❤️</h1>
+  <button onclick="showLove()">Click Me 😏</button>
+
+  <div id="loveMsg" class="hidden">
+    I LOVE YOU AMOLI 💖<br><br>
+    From Tanish 😘
   </div>
+
+  <script>
+    function showLove() {
+      document.getElementById("loveMsg").style.display = "block";
+    }
+
+    function createHeart() {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
 </body>
 </html>
